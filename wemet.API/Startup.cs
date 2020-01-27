@@ -30,8 +30,10 @@ namespace wemet.API
 		//add DB as a service 
 		services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 		//start services
-		services.AddControllers();
-  }
+		services.AddControllers(); 
+    //fix issue of API data coming from different domain (port 5000) than Angular front end (port 4200)
+    services.AddCors();
+    }
 
   // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -44,6 +46,9 @@ namespace wemet.API
     // app.UseHttpsRedirection();
 
     app.UseRouting();
+
+    //important Cors header goes between UseRouting and UseAuth
+    app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
     app.UseAuthorization();
 
