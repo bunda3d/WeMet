@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using wemet.API.Data;
@@ -8,17 +9,21 @@ namespace wemet.API.Controllers
 {
   [Route("api/[controller]")]
   [ApiController] 
-  public class AuthController
+  public class AuthController : ControllerBase
   {
     private readonly IAuthRepository _repo;
     public AuthController(IAuthRepository repo)
     {
       _repo = repo;
     }
+
     [HttpPost("register")]
-    public async Task<ActionResult> Register(UserForRegisterDto userForRegisterDto)
+    public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
     {
       // validate request
+
+      //if (!ModelState.IsValid)
+      //  return BadRequest(ModelState);
 
       userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
@@ -29,10 +34,11 @@ namespace wemet.API.Controllers
       {
         Username = userForRegisterDto.Username
       };
+
       var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
+
       //fix later to add CreatedAtRoute()
       return StatusCode(201);
-
     }
   }
 }
