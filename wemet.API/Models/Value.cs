@@ -1,4 +1,4 @@
-namespace wemet.API.models
+namespace wemet.API.Models
 {
 	public class Value
 	{

@@ -8,8 +8,8 @@ using wemet.API.Data;
 namespace wemet.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200126071311_initialcreate")]
-    partial class initialcreate
+    [Migration("20200128014853_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -17,7 +17,7 @@ namespace wemet.API.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.0.0");
 
-            modelBuilder.Entity("wemet.API.models.Value", b =>
+            modelBuilder.Entity("wemet.API.Models.Value", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

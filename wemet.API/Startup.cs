@@ -33,6 +33,8 @@ namespace wemet.API
 		services.AddControllers(); 
     //fix issue of API data coming from different domain (port 5000) than Angular front end (port 4200)
     services.AddCors();
+      services.AddScoped<IAuthRespository, AuthRepository>(); 
+
     }
 
   // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

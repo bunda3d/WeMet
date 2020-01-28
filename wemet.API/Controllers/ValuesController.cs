@@ -9,7 +9,7 @@ using wemet.API.Data;
 namespace wemet.API.Controllers
 {
   [Route("api/[controller]")]
-  [ApiController]
+  [ApiController] 
   public class ValuesController : ControllerBase
   {
     private readonly DataContext _context;
