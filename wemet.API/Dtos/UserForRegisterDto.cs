@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
+//data transfer object for auth & verf of new user's credentials
+
 namespace wemet.API.Dtos
 {
   public class UserForRegisterDto
