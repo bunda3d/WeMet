@@ -5,11 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using wemet.API.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace wemet.API.Controllers
 {
+  //auth attribute->user must authenticate/be token bearer to use API
+  [Authorize]
   [Route("api/[controller]")]
   [ApiController] 
+  //CRUD app 
   public class ValuesController : ControllerBase
   {
     private readonly DataContext _context;
@@ -19,13 +23,15 @@ namespace wemet.API.Controllers
     }
     // GET api/values
     [HttpGet]
+    //notice this is GetValue(s), plural, (a list)
     public async Task<IActionResult> GetValues()
     {
       var values = await _context.Values.ToListAsync();
       return Ok(values);
     }
-
-    // GET api/values/5
+    //allow anonymous to get single API value, but only authenticated token bearers can scrape stream
+    [AllowAnonymous]
+    // GET api/value/
     [HttpGet("{id}")]
     public async Task<IActionResult> GetValue(int id)
     {
@@ -34,19 +40,19 @@ namespace wemet.API.Controllers
       return Ok(value);
     }
 
-    // POST api/values
+    // POST api/value
     [HttpPost]
     public void Post([FromBody] string value)
     {
     }
 
-    // PUT api/values/5
+    // PUT api/values/
     [HttpPut("{id}")]
     public void Put(int id, [FromBody] string value)
     {
     }
 
-    // DELETE api/values/5
+    // DELETE api/values/
     [HttpDelete("{id}")]
     public void Delete(int id)
     {
