@@ -58,7 +58,7 @@ namespace wemet.API.Controllers
       var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
       if (userFromRepo == null)
-      //don't want to give msg confirming username exists, so just vague 'Unauthorized' return
+      //don't want to give msg confirming username exists, so return vague 'Unauthorized' 
         return Unauthorized();
 
       //2 claims; id and username
