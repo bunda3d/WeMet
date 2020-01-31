@@ -9,6 +9,8 @@ import { AuthService } from '../_services/auth.service';
 export class NavComponent implements OnInit {
   // obj to accept form inputs
   model: any = {};
+  // get bootstrap nav toggle in angular, https://ng-bootstrap.github.io/#/getting-started
+  public collapsed = true;
 
   title = 'WeMet!';
 
@@ -17,13 +19,24 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
 
-  // method to login input passed as model
+  // method to login; form input passed as model
   login() {
     this.authService.login(this.model).subscribe(next => {
       console.log('Logged in successfully');
     }, error => {
       console.log('Failed to login');
     });
+  }
+
+// determine if user is logged in bool--if token is empty, return !!=false
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+// deletes token
+  logout() {
+    localStorage.removeItem('token');
+    console.log('logged out');
   }
 
 }
