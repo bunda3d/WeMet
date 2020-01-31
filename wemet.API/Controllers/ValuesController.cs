@@ -21,6 +21,8 @@ namespace wemet.API.Controllers
     {
       _context = context;
     }
+    //TEMPORARY FOR DEV: allow anonymous to get API valueS
+    [AllowAnonymous]
     // GET api/values
     [HttpGet]
     //notice this is GetValue(s), plural, (a list)
