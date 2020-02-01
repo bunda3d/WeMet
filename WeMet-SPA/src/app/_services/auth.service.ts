@@ -19,4 +19,8 @@ export class AuthService {
       })
     );
   }
+// will return observable that needs subscribed to in register component
+  register(model: any) {
+    return this.http.post(this.baseUrl + 'register', model);
+  }
 }

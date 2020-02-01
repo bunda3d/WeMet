@@ -10,18 +10,20 @@ export class HomeComponent implements OnInit {
   // var assists in toggling visibility of registration components
   registerMode = false;
   // values var gets values from .NET API
-  values: any;
+  // values: any;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.getValues();
+    // this.getValues();
   }
 
   registerToggle() {
     this.registerMode = true;
   }
 
+  // method to get api values from dotnet api http service.
+  /*
   getValues() {
     this.http.get('http://localhost:5000/api/values').subscribe(response => {
     this.values = response;
@@ -29,6 +31,7 @@ export class HomeComponent implements OnInit {
       console.log(error);
   });
   }
+  */
 
   cancelRegisterMode(registerMode: boolean) {
     this.registerMode = registerMode;
