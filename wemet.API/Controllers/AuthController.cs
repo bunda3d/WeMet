@@ -13,7 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace wemet.API.Controllers
 {
   [Route("api/[controller]")]
-  [ApiController] 
+  [ApiController]
   public class AuthController : ControllerBase
   {
     private readonly IAuthRepository _repo;
@@ -54,11 +54,11 @@ namespace wemet.API.Controllers
     //login Data Transfer Object creation
     public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
     {
-			//check name as lower case, like as registered in db repo
+      // check name as lower case, like as registered in db repo
       var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
       if (userFromRepo == null)
-      //don't want to give msg confirming username exists, so return vague 'Unauthorized' 
+        // don't want to give msg confirming username exists, so return vague 'Unauthorized' 
         return Unauthorized();
 
       //2 claims; id and username
@@ -69,7 +69,7 @@ namespace wemet.API.Controllers
       };
 
       //create key
-			//will reuse key in multiple places, store key in AppSettings.json, similar to storing connection string
+      //will reuse key in multiple places, store key in AppSettings.json, similar to storing connection string
       var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
 
       //encrypt key as signing credentials of token
