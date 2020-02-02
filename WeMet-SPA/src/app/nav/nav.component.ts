@@ -6,6 +6,7 @@ import { AuthService } from '../_services/auth.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
+
 export class NavComponent implements OnInit {
   // obj to accept form inputs
   model: any = {};
@@ -28,12 +29,12 @@ export class NavComponent implements OnInit {
     });
   }
 
-// determine if user is logged in bool--if token is empty, return !!=false
+  // determine if user is logged in bool--if token is empty, return !!=false
   loggedIn() {
     const token = localStorage.getItem('token');
     return !!token;
   }
-// deletes token
+  // deletes token
   logout() {
     localStorage.removeItem('token');
     console.log('logged out');
