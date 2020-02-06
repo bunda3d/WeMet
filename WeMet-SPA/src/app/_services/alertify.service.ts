@@ -6,12 +6,15 @@ import * as alertify from 'alertifyjs';
 })
 export class AlertifyService {
 
-constructor() { }
+  constructor() { }
 
+// function for if alertify msg is confirmed
+// okCallback for if user confirms 'ok' rather than cancel
   confirm(message: string, okCallback: () => any) {
     alertify.comfirm(message, (e: any) => {
       if (e) {
         okCallback();
+        // else do nothing if no 'ok' clicked
       } else { }
     });
   }
