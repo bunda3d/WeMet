@@ -10,7 +10,7 @@ import {
 import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
-// angular catches 400, 500 errors from API
+// angular catches 400, 500 server errors from API
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   intercept(
@@ -29,20 +29,24 @@ export class ErrorInterceptor implements HttpInterceptor {
           }
           const serverError = error.error;
           let modalStateErrors = '';
+          // for server errors, build array of msgs
           if (serverError.errors && typeof serverError.errors === 'object') {
             for (const key in serverError.errors) {
+              // sq brkts = "object notation"
               if (serverError.errors[key]) {
+                // build array of error msgs, \n for new line if multiple msgs.
                 modalStateErrors += serverError.error[key] + '\n';
               }
             }
           }
-          return throwError(modalStateErrors || serverError || 'Server Error');
+          // return modal state & server errors (or 'Unknown Server Error' that should be investigated).
+          return throwError(modalStateErrors || serverError || 'Unknown Server Error');
         }
       })
     );
   }
 }
-// multi: class can have multiple interceptors
+// ""multi" because class can provide multiple HTTP_INTERCEPTORS error interceptors
 export const ErrorInterceptorProvider = {
   provide: HTTP_INTERCEPTORS,
   useClass: ErrorInterceptor,
