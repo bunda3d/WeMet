@@ -34,8 +34,9 @@ export class NavComponent implements OnInit {
 
   // determine if user is logged in bool--if token is empty, return !!=false
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authService.loggedIn();
+    // const token = localStorage.getItem('token');
+    // return !!token;
   }
   // deletes token
   logout() {
