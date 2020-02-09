@@ -3,8 +3,8 @@
   <div *ngIf="!registerMode" style="text-align: center">
     <h1 class="p-2">Find Great Colleagues</h1>
     <h2 class="p-5">We think you'll work well with these teammates</h2>
-
-  <div class="row">
+<!-- teammate face array -->
+  <div class="row justify-content-center">
     <div class="col-xs-6 col-lg-12 text-center">
       <img class="rounded-circle p-1 mx-auto"  src="assets/img/faces/face4-280xauto.jpg" alt="teammate face image" width="140" height="140">
 
@@ -19,15 +19,20 @@
       <img class="rounded-circle p-1  mx-auto"  src="assets/img/faces/face1-280xauto.jpg" alt="teammate face image" width="140" height="140">
     </div>    
   </div>
+  <!-- CTA -->
+    <h4 class="m-4">All you need to do is sign up!</h4>
 
-    <h5 class="m-4">All you need to do is sign up!</h5>
     <div class="text-center">
+    <!-- button -->      
       <button class="btn btn-primary btn-lg m-2" (click)="registerToggle()">Register</button>
+    <!-- button -->      
       <button class="btn btn-info btn-lg m-2">Learn more</button>
     </div>
   </div>
 
-  <div *ngIf="registerMode" class="container">
+  <!-- show if  -->
+  <div *ngIf="registerMode" class="container"> 
+    
     <div class="row justify-content-center">
       <div class="col-4">
         <!--Register = child component of Home component with registration functionality -->
