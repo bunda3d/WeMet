@@ -7,18 +7,28 @@ import { AlertifyService } from '../_services/alertify.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-
 export class NavComponent implements OnInit {
+  // get ngx-bootstrap nav toggle in angular
+  public isCollapsed = true;
+  // navbar title
+  title = 'WeMet!';
   // obj to accept form inputs
   model: any = {};
-  // get bootstrap nav toggle in angular, https://ng-bootstrap.github.io/#/getting-started
-  public collapsed = true;
-
-  title = 'WeMet!';
 
   constructor(private authService: AuthService, private alertify: AlertifyService) { }
 
   ngOnInit() {
+  }
+
+  // navbar dropdown methods
+  onHidden(): void {
+    console.log('Dropdown is hidden');
+  }
+  onShown(): void {
+    console.log('Dropdown is shown');
+  }
+  isOpenChange(): void {
+    console.log('Dropdown state is changed');
   }
 
   // method to login; form input passed as model

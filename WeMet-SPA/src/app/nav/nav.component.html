@@ -4,12 +4,12 @@
   <!-- navbar brand -->
   <a class="navbar-brand" href="#">{{ title }}</a>
   <!-- button - navbar toggler -->
-  <button class="navbar-toggler d-lg-none" type="button" (click)="collapsed = !collapsed" [attr.aria-expanded]="!collapsed" aria-controls="navbarDefault" aria-label="Toggle navigation">
+  <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <!-- inline links -->
-  <div class="collapse navbar-collapse" id="navbarContent" [class.collapse]="collapsed">
+  <div class="collapse navbar-collapse" id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true" >
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
         <a class="nav-link" href="#">Matches </a>
@@ -22,7 +22,8 @@
       </li>
     </ul>
 
-  <!--
+  <!-- delete when get dropdown working
+    
   <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
     <a href id="basic-link" dropdownToggle (click)="false"
         aria-controls="basic-link-dropdown">Click me for a dropdown, yo!</a>
@@ -36,23 +37,26 @@
   -->
 
   <!-- show dropdown for logged in users -->
-    <div *ngIf="loggedIn()" class="navbar-collapse" [class.collapse]="collapsed" id="navbarLoggedInUserDropDown"> 
+    <div *ngIf="loggedIn()" dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()" > 
       <div class="dropdown-divider"></div>
-        <ul class="navbar-nav ml-auto">
-          <!-- dropdown toggle -->
-          <li class="nav-item" dropdown>
-            <a class="dropdown-toggle nav-link" style="cursor: pointer" dropdownToggle id="navbarWelcomeUserDropdown" role="button" (click)=" !collapsed" [attr.aria-expanded]="!collapsed" aria-controls="navbarDefault" aria-label="Toggle navigation"><i class="fa fa-id-card-o text-light bg-dark mr-2"></i>  
+        <a class="dropdown-toggle nav-link" style="cursor: pointer" dropdownToggle id="navbarWelcomeUserDropdown" role="button" (click)=" !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarDefault" aria-label="Toggle navigation"><i class="fa fa-id-card-o text-light bg-dark mr-2"></i> 
     <!-- add "safe navigation" (?) marker to interpolation to make private "unique_name" optional -->
-            Welcome {{ authService.decodedToken?.unique_name | titlecase }}
-            </a>
-              <div *dropdownMenu aria-labelledby="navbarWelcomeUserDropdown" class="dropdownMenu text-light bg-dark">
-                <a class="dropdown-item text-light bg-dark" ngbDropdownItem href="#" (click)="$event.preventDefault()"><i class="fa fa-user text-light bg-dark"></i>  Edit Profile</a>
-              <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-light bg-dark" ngbropdownItem href="#" (click)="logout()"><i class="fa fa-sign-out text-light bg-dark"></i>  Logout</a>
-              </div> 
-          </li>
-        </ul>
-      </div>
+        Welcome {{ authService.decodedToken?.unique_name | titlecase }}
+        </a>
+      <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu navbar-nav ml-auto" role="menu" aria-labelledby="basic-link" >
+    <!-- dropdown toggle -->
+        <li *ngFor="let choice of items" class="nav-item" dropdown>
+          <a class="dropdown-item" href="#">{{choice}}</a>
+        </li> 
+        <li class="nav-item" dropdown> 
+          <div *dropdownMenu aria-labelledby="navbarWelcomeUserDropdown" class="dropdownMenu text-light bg-primary"> 
+            <a class="dropdown-item text-light bg-dark" ngbDropdownItem href="#" (click)="$event.preventDefault()"><i class="fa fa-user text-light bg-dark"></i>  Edit Profile</a> 
+          <div class="dropdown-divider"></div> 
+            <a class="dropdown-item text-light bg-dark" ngbropdownItem href="#" (click)="logout()"><i class="fa fa-sign-out text-light bg-dark"></i>  Logout</a> 
+          </div> 
+        </li> 
+      </ul> 
+    </div> 
 
     <!-- angular template form (#loginForm)-->
     <form *ngIf="!loggedIn()" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
