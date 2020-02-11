@@ -4,6 +4,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgxNavbarModule,
     BsDropdownModule.forRoot(),
     BrowserAnimationsModule,
     CollapseModule.forRoot(),
