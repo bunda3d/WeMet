@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, DoCheck {
+  // better ngx navbar: 
+  //https://github.com/Totati/ngx-bootstrap-navbar#readme
+  checked = 0;
+  ngDoCheck() {
+    console.log(++this.checked);
+    }
+  
   // get ngx-bootstrap nav toggle in angular
-  public isCollapsed = true;
+  //public isCollapsed = true;
   // navbar title
   title = 'WeMet!';
   // obj to accept form inputs
@@ -54,5 +62,4 @@ export class NavComponent implements OnInit {
     this.alertify.message('logged out');
     // console.log('logged out');
   }
-
 }

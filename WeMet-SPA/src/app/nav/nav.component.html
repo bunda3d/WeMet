@@ -1,10 +1,10 @@
 <!-- navbar -->
-<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-primary">
+<nav ngxNavbarDynamicExpand class="navbar navbar-dark navbar-expand-lg fixed-top bg-primary">
   <div class="container">
   <!-- navbar brand -->
   <a class="navbar-brand" href="#">{{ title }}</a>
   <!-- button - navbar toggler -->
-  <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" aria-label="Toggle navigation" dropdownToggle>
+  <button class="navbar-toggler d-lg-none" type="button" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" aria-label="Toggle navigation" dropdownToggle>
     <span class="navbar-toggler-icon"></span>
   </button>
 
