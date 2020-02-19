@@ -1,14 +1,15 @@
 <!-- navbar -->
-<nav ngxNavbarDynamicExpand 
+<nav
   class="navbar navbar-dark navbar-expand-lg fixed-top bg-primary">
   <div class="container">
     <!-- navbar brand -->
-    <a class="navbar-brand" href="#">{{ title }}</a>
+    <a class="navbar-brand"
+    [routerLink]="['./home']">{{ title }}</a>
     <!-- button - navbar toggler -->
     <button 
       class="navbar-toggler d-lg-none" 
       type="button" 
-      (click)="collapse.toggle()"
+      (click)="collapse=!collapse"
       aria-controls="main-nav"
       aria-expanded="false"
       aria-label="navbar-toggler">
@@ -18,34 +19,65 @@
     </button>
 
     <!-- inline links -->
-    <ngx-navbar-collapse #collapse="ngxNavbarCollapse">
+    <div [ngbCollapse]="collapse" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Matches </a>
+          <a class="nav-link" 
+          routerLinkActive="active"
+          [routerLink]="['/members']" 
+          (click)="collapse = true">Matches </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Lists </a>
+          <a class="nav-link" 
+          routerLinkActive="active"
+          [routerLink]="['/lists']"  
+          (click)="collapse = true">Lists </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Messages </a>
+          <a class="nav-link" 
+          routerLinkActive="active"
+          [routerLink]="['./messages']" 
+          (click)="collapse = true">Messages </a>
         </li>
       </ul>
 
     <!-- show dropdown for logged in users -->
-      <div *ngIf="loggedIn()"  (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()" dropdown> 
-          <a href class="dropdown-toggle nav-link" style="cursor: pointer" dropdownToggle id="basic-link" (click)="false">
-            <i class="fa fa-id-card-o text-light bg-dark mr-2"></i> 
-      <!-- add "safe navigation" (?) marker to interpolation to make private "unique_name" optional -->
-          Welcome {{ authService.decodedToken?.unique_name | titlecase }}
-          </a>
-        <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu navbar-nav ml-auto" role="menu" aria-labelledby="basic-link" >
+      <div *ngIf="loggedIn()" 
+      class="navbar-collapse" 
+      [ngbCollapse]="collapse" 
+      id="navbarWelcomeUserDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" 
+          ngbDropdown 
+          display="dynamic" 
+          placement="bottom-right">
+            <a class="dropdown-toggle nav-link" style="cursor: pointer" 
+            ngbDropdownToggle 
+            id="navbarDropdownLoggedInToggle"
+            role="button">
+              <i class="fa fa-id-card-o text-light bg-dark mr-2"></i> 
+        <!-- add "safe navigation" (?) marker to interpolation to make private "unique_name" optional -->
+            Welcome {{ authService.decodedToken?.unique_name | titlecase }}
+            </a>
       <!-- dropdown toggle -->
-          <li class="nav-item" dropdown> 
-            <div *dropdownMenu aria-labelledby="navbarWelcomeUserDropdown" class="dropdownMenu text-light bg-primary"> 
-              <a class="dropdown-item text-light bg-dark" ngbDropdownItem href="#" (click)="$event.preventDefault()"><i class="fa fa-user text-light bg-dark"></i>  Edit Profile</a> 
-            <div class="dropdown-divider"></div> 
-              <a class="dropdown-item text-light bg-dark" ngbropdownItem href="#" (click)="logout()"><i class="fa fa-sign-out text-light bg-dark"></i>  Logout</a> 
-            </div> 
+          <div ngbDropdownMenu 
+          class="navbar-collapse" 
+          [ngbCollapse]="collapse" 
+          class="dropdownMenu text-light bg-primary"
+          aria-labelledby="navbarWelcomeUserDropdown"> 
+            <a ngbDropdownItem  
+            class="dropdown-item text-light bg-primary" 
+            class="navbar-collapse" 
+            [ngbCollapse]="collapse" 
+            (click)="$event.preventDefault()">
+              <i class="fa fa-user text-light bg-primary">
+                </i>   Edit Profile</a> 
+          <div class="dropdown-divider"></div> 
+            <a ngbropdownItem
+            class="dropdown-item text-light bg-primary"  (click)="logout()">
+              <i class="fa fa-sign-out text-light bg-primary">
+                </i>   Logout</a> 
+          </div> 
           </li> 
         </ul> 
       </div> 
@@ -61,6 +93,6 @@
         <!-- button: disabled if login inputs are not valid (blank, incorrect )-->
         <button [disabled]="!loginForm.valid" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
       </form>
-    </ngx-navbar-collapse>    
+    </div>    
   </div> 
 </nav>

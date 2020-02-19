@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
+// import { Routes } from '../routes';
 
 @Component({
   selector: 'app-nav',
@@ -8,32 +9,19 @@ import { AlertifyService } from '../_services/alertify.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  // get ng-bootstrap nav toggle in angular
+  // better ng bootstrap navbar (no jquery):
   // https://ng-bootstrap.github.io/#/components/nav/examples
+  // https://ng-bootstrap.github.io/#/components/collapse/examples
+  // https://ng-bootstrap.github.io/#/components/dropdown/examples
   public collapse = true;
   // navbar title
   title = 'WeMet!';
   // obj to accept form inputs
   model: any = {};
 
-  // better ng bootstrap navbar (no jquery):
-  // https://ng-bootstrap.github.io/#/getting-started
-
-
   constructor(private authService: AuthService, private alertify: AlertifyService) { }
 
   ngOnInit() {
-  }
-
-  // navbar dropdown methods
-  onHidden(): void {
-    console.log('Dropdown is hidden');
-  }
-  onShown(): void {
-    console.log('Dropdown is shown');
-  }
-  isOpenChange(): void {
-    console.log('Dropdown state is changed');
   }
 
   // method to login; form input passed as model
@@ -57,6 +45,7 @@ export class NavComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.alertify.message('logged out');
+    return this.collapse;
     // console.log('logged out');
   }
 }

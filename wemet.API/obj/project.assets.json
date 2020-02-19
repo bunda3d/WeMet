@@ -4506,25 +4506,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bunda_18zzazc\\.nuget\\packages\\": {},
+    "C:\\Users\\kbunda\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CloudStation\\WEBSITE PROJECTS\\_TUTORIALS\\ASPNET CORE AND ANGULAR\\wemet\\wemet.api\\wemet.API.csproj",
+      "projectUniqueName": "C:\\Users\\kbunda\\Documents\\REPO\\WeMet\\wemet.api\\wemet.API.csproj",
       "projectName": "wemet.API",
-      "projectPath": "D:\\CloudStation\\WEBSITE PROJECTS\\_TUTORIALS\\ASPNET CORE AND ANGULAR\\wemet\\wemet.api\\wemet.API.csproj",
-      "packagesPath": "C:\\Users\\bunda_18zzazc\\.nuget\\packages\\",
-      "outputPath": "D:\\CloudStation\\WEBSITE PROJECTS\\_TUTORIALS\\ASPNET CORE AND ANGULAR\\wemet\\wemet.api\\obj\\",
+      "projectPath": "C:\\Users\\kbunda\\Documents\\REPO\\WeMet\\wemet.api\\wemet.API.csproj",
+      "packagesPath": "C:\\Users\\kbunda\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kbunda\\Documents\\REPO\\WeMet\\wemet.api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\bunda_18zzazc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kbunda\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],

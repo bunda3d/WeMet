@@ -1,38 +1,46 @@
+// from node
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
-
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+
+// from ng
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
+import { MemberListComponent } from './member-list/member-list.component';
+import { ListsComponent } from './lists/lists.component';
+import { MessagesComponent } from './messages/messages.component';
+import { appRoutes } from './routes';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    HomeComponent,
-    RegisterComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    NgbModule
-  ],
-  providers: [
-    AuthService,
-    ErrorInterceptorProvider
-  ],
-  bootstrap: [
-    AppComponent
-  ]
+   declarations: [
+      AppComponent,
+      NavComponent,
+      HomeComponent,
+      RegisterComponent,
+      MemberListComponent,
+      ListsComponent,
+      MessagesComponent
+   ],
+   imports: [
+      BrowserModule,
+      HttpClientModule,
+      FormsModule,
+      NgbModule,
+      RouterModule.forRoot(appRoutes)
+   ],
+   providers: [
+      AuthService,
+      ErrorInterceptorProvider
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
