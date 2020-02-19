@@ -1,28 +1,24 @@
-import { Component, OnInit, DoCheck, ChangeDetectionStrategy } from '@angular/core';
-import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit, DoCheck {
-  // get ngx-bootstrap nav toggle in angular
+export class NavComponent implements OnInit {
+  // get ng-bootstrap nav toggle in angular
+  // https://ng-bootstrap.github.io/#/components/nav/examples
   public collapse = true;
   // navbar title
   title = 'WeMet!';
   // obj to accept form inputs
   model: any = {};
 
-  // better ngx navbar:
-  // https://github.com/Totati/ngx-bootstrap-navbar#readme
-  checked = 0;
-  ngDoCheck() {
-    console.log(++this.checked);
-  }
+  // better ng bootstrap navbar (no jquery):
+  // https://ng-bootstrap.github.io/#/getting-started
+
 
   constructor(private authService: AuthService, private alertify: AlertifyService) { }
 
