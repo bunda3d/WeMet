@@ -1,53 +1,45 @@
 <!-- navbar -->
-<nav ngxNavbarDynamicExpand class="navbar navbar-dark navbar-expand-lg fixed-top bg-primary">
+<nav ngxNavbarDynamicExpand 
+  class="navbar navbar-dark navbar-expand-lg fixed-top bg-primary">
   <div class="container">
-  <!-- navbar brand -->
-  <a class="navbar-brand" href="#">{{ title }}</a>
-  <!-- button - navbar toggler -->
-  <button class="navbar-toggler d-lg-none" type="button" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" aria-label="Toggle navigation" dropdownToggle>
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <!-- navbar brand -->
+    <a class="navbar-brand" href="#">{{ title }}</a>
+    <!-- button - navbar toggler -->
+    <button 
+      class="navbar-toggler d-lg-none" 
+      type="button" 
+      (click)="collapse.toggle()"
+      aria-controls="main-nav"
+      aria-expanded="false"
+      aria-label="navbar-toggler">
+      <span 
+        class="navbar-toggler-icon">
+      </span>
+    </button>
 
-  <!-- inline links -->
-  <div class="collapse navbar-collapse" id="collapseBasic" [collapse]="isCollapsed" dropdown>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Matches </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Lists </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Messages </a>
-      </li>
-    </ul>
-
-    <!-- delete when get dropdown working
-      
-    <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
-      <a href id="basic-link" dropdownToggle (click)="false"
-          aria-controls="basic-link-dropdown">Click me for a dropdown, yo!</a>
-      <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
-          role="menu" aria-labelledby="basic-link">
-        <li *ngFor="let choice of items">
-          <a class="dropdown-item" href="#">{{choice}}</a>
+    <!-- inline links -->
+    <ngx-navbar-collapse #collapse="ngxNavbarCollapse">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Matches </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Lists </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Messages </a>
         </li>
       </ul>
-    </span>
-    -->
 
     <!-- show dropdown for logged in users -->
       <div *ngIf="loggedIn()"  (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()" dropdown> 
-        <div class="dropdown-divider"></div>
-          <a class="dropdown-toggle nav-link" style="cursor: pointer" dropdownToggle id="navbarWelcomeUserDropdown" role="button" (click)=" !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarDefault" aria-label="Toggle navigation"><i class="fa fa-id-card-o text-light bg-dark mr-2"></i> 
+          <a href class="dropdown-toggle nav-link" style="cursor: pointer" dropdownToggle id="basic-link" (click)="false">
+            <i class="fa fa-id-card-o text-light bg-dark mr-2"></i> 
       <!-- add "safe navigation" (?) marker to interpolation to make private "unique_name" optional -->
           Welcome {{ authService.decodedToken?.unique_name | titlecase }}
           </a>
         <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu navbar-nav ml-auto" role="menu" aria-labelledby="basic-link" >
       <!-- dropdown toggle -->
-          <li *ngFor="let choice of items" class="nav-item" dropdown>
-            <a class="dropdown-item" href="#">{{choice}}</a>
-          </li> 
           <li class="nav-item" dropdown> 
             <div *dropdownMenu aria-labelledby="navbarWelcomeUserDropdown" class="dropdownMenu text-light bg-primary"> 
               <a class="dropdown-item text-light bg-dark" ngbDropdownItem href="#" (click)="$event.preventDefault()"><i class="fa fa-user text-light bg-dark"></i>  Edit Profile</a> 
@@ -69,6 +61,6 @@
         <!-- button: disabled if login inputs are not valid (blank, incorrect )-->
         <button [disabled]="!loginForm.valid" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
       </form>
-    </div>
-  </div>
+    </ngx-navbar-collapse>    
+  </div> 
 </nav>

@@ -25,10 +25,9 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NgxNavbarModule,
     BsDropdownModule.forRoot(),
-    BrowserAnimationsModule,
-    CollapseModule.forRoot(),
+    CollapseModule.forRoot(),     BrowserAnimationsModule,
+    NgxNavbarModule
   ],
   providers: [
     AuthService,
