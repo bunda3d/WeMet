@@ -4,7 +4,9 @@
   <div class="container">
     <!-- navbar brand -->
     <a class="navbar-brand"
-    [routerLink]="['./home']">{{ title }}</a>
+    [routerLink]="['./home']"
+    (click)="collapse = true">
+    {{ title }}</a>
     <!-- button - navbar toggler -->
     <button 
       class="navbar-toggler d-lg-none" 
@@ -18,7 +20,7 @@
       </span>
     </button>
 
-    <!-- inline links -->
+    <!-- inline collapsing links -->
     <div [ngbCollapse]="collapse" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
@@ -44,37 +46,31 @@
     <!-- show dropdown for logged in users -->
       <div *ngIf="loggedIn()" 
       class="navbar-collapse" 
-      [ngbCollapse]="collapse" 
-      id="navbarWelcomeUserDropdown">
+      [class.collapse]="collapse" >
         <ul class="navbar-nav ml-auto">
           <li class="nav-item" 
-          ngbDropdown 
-          display="dynamic" 
-          placement="bottom-right">
-            <a class="dropdown-toggle nav-link" style="cursor: pointer" 
-            ngbDropdownToggle 
-            id="navbarDropdownLoggedInToggle"
-            role="button">
-              <i class="fa fa-id-card-o text-light bg-dark mr-2"></i> 
-        <!-- add "safe navigation" (?) marker to interpolation to make private "unique_name" optional -->
-            Welcome {{ authService.decodedToken?.unique_name | titlecase }}
-            </a>
-      <!-- dropdown toggle -->
+          ngbDropdown >
+          <!-- dropdown toggle -->
+          <a class="dropdown-toggle nav-link" style="cursor: pointer" 
+          ngbDropdownToggle 
+          role="button">
+            <i class="fa fa-id-card-o text-light bg-dark mr-2"></i> 
+      <!-- add "safe navigation" (?) marker to interpolation to make private "unique_name" optional -->
+          Welcome {{ authService.decodedToken?.unique_name | titlecase }}
+          </a>
+          <!-- dropdown menu -->
           <div ngbDropdownMenu 
-          class="navbar-collapse" 
-          [ngbCollapse]="collapse" 
-          class="dropdownMenu text-light bg-primary"
-          aria-labelledby="navbarWelcomeUserDropdown"> 
+          class="dropdown-menu"          aria-labelledby="navbarWelcomeUserDropdown"> 
             <a ngbDropdownItem  
             class="dropdown-item text-light bg-primary" 
-            class="navbar-collapse" 
-            [ngbCollapse]="collapse" 
-            (click)="$event.preventDefault()">
+            (click)="collapse = true"
+            routerLinkActive="active"
+            [routerLink]="['./messages']" >
               <i class="fa fa-user text-light bg-primary">
                 </i>   Edit Profile</a> 
           <div class="dropdown-divider"></div> 
-            <a ngbropdownItem
-            class="dropdown-item text-light bg-primary"  (click)="logout()">
+            <a ngbDropdownItem
+            class="dropdown-item text-light bg-primary"  (click)="logout(); $event.preventDefault()">
               <i class="fa fa-sign-out text-light bg-primary">
                 </i>   Logout</a> 
           </div> 
@@ -91,7 +87,11 @@
         <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password" 
           required [(ngModel)]="model.password" aria-label="Password">
         <!-- button: disabled if login inputs are not valid (blank, incorrect )-->
-        <button [disabled]="!loginForm.valid" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+        <button 
+        [disabled]="!loginForm.valid" class="btn btn-outline-success my-2 my-sm-0" 
+        type="submit"
+        (click)="collapse = true">
+        Login</button>
       </form>
     </div>    
   </div> 
