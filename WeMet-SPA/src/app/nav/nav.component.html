@@ -70,7 +70,7 @@
                 </i>   Edit Profile</a> 
           <div class="dropdown-divider"></div> 
             <a ngbDropdownItem
-            class="dropdown-item text-light bg-primary"  (click)="logout(); $event.preventDefault()">
+            class="dropdown-item text-light bg-primary"  (click)="logout();  collapse = true">
               <i class="fa fa-sign-out text-light bg-primary">
                 </i>   Logout</a> 
           </div> 
@@ -86,9 +86,9 @@
         <!-- password input --> 
         <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password" 
           required [(ngModel)]="model.password" aria-label="Password">
-        <!-- button: disabled if login inputs are not valid (blank, incorrect )-->
+        <!-- button: disabled if login inputs are not valid (blank, incorrect) -->
         <button 
-        [disabled]="!loginForm.valid" class="btn btn-outline-success my-2 my-sm-0" 
+        [disabled]="!loginForm.valid" class="btn btn-outline-success border-success my-2 my-sm-0" 
         type="submit"
         (click)="collapse = true">
         Login</button>
