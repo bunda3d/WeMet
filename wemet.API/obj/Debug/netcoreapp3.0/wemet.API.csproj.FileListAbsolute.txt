@@ -143,3 +143,4 @@ C:\Users\kbunda\Documents\REPO\WeMet\wemet.api\obj\Debug\netcoreapp3.0\wemet.API
 C:\Users\kbunda\Documents\REPO\WeMet\wemet.api\obj\Debug\netcoreapp3.0\wemet.API.csproj.CopyComplete
 C:\Users\kbunda\Documents\REPO\WeMet\wemet.api\obj\Debug\netcoreapp3.0\wemet.API.dll
 C:\Users\kbunda\Documents\REPO\WeMet\wemet.api\obj\Debug\netcoreapp3.0\wemet.API.pdb
+C:\Users\kbunda\Documents\REPO\WeMet\wemet.api\bin\Debug\netcoreapp3.0\Data\UserSeedData.json
