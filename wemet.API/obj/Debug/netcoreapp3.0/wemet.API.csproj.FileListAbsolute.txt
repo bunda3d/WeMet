@@ -144,3 +144,4 @@ C:\Users\kbunda\Documents\REPO\WeMet\wemet.api\obj\Debug\netcoreapp3.0\wemet.API
 C:\Users\kbunda\Documents\REPO\WeMet\wemet.api\obj\Debug\netcoreapp3.0\wemet.API.dll
 C:\Users\kbunda\Documents\REPO\WeMet\wemet.api\obj\Debug\netcoreapp3.0\wemet.API.pdb
 C:\Users\kbunda\Documents\REPO\WeMet\wemet.api\bin\Debug\netcoreapp3.0\Data\UserSeedData.json
+D:\CloudStation\WEBSITE PROJECTS\_TUTORIALS\ASPNET CORE AND ANGULAR\wemet\wemet.api\bin\Debug\netcoreapp3.0\Data\UserSeedData.json
